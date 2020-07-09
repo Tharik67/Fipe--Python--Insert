@@ -1,6 +1,6 @@
 
 __all__ = ["getConect","conectBD","disconectBD"]
-
+#teste1
 import mysql.connector
 from mysql.connector import Error
 from mysql.connector import errorcode
