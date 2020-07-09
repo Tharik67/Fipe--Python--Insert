@@ -1,7 +1,8 @@
 
 
 __all__ = ["getConect","conectBD","disconectBD"]
-#teste2
+#teste3
+
 
 import mysql.connector
 from mysql.connector import Error
