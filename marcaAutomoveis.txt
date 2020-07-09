@@ -1,0 +1,186 @@
+AUDI:Alemanha
+BMW:Alemanha
+CITROEN:Franca
+FIAT:Italia
+FORD:Estados Unidos
+CHEVROLET:Estados Unidos
+HONDA:Japao
+HYUNDAI:Coreia do Sul
+KIA:Coreia do Sul
+MERCEDES-BENZ:Alemanha
+MITSUBISHI:Japao
+NISSAN:Japao
+PEUGEOT:Franca
+RENAULT:Franca
+SUZUKI:Japao
+TOYOTA:Japao
+VOLVO:Suecia
+VOLKSWAGEN:Alemanha
+ACURA:Estados Unidos
+AGRALE:Brasil
+ALFA ROME:Italia
+AM GEN:Estados Unidos
+ASIA MOTORS:Coreia do Sul
+ASTON MARTIN:Reino Unido
+BABY:Estados Unidos
+BRM:Brasil
+BUGRE:Brasil
+CADILLAC:Estados Unidos
+CBT JIPE:Brasil
+CHANA:China
+CHANGAN:China
+CHERY:China
+CHRYSLER:Estados Unidos
+CROSS LANDER:Reino Unido
+DAEWOO	:Coreia do Sul
+DAIHATSU:Japao
+DODGE:Estados Unidos
+EFFA:Uruguai
+ENGESA:Brasil
+ENVEMO:Brasil
+FERRARI:Italia
+FIBRAVAN:Brasil
+FOTON:China
+FYBER:Brasil
+GEELY:China
+GREAT WALL:China
+GURGEL:Brasil
+HAFEI:China
+HITECH ELECTRIC:Brasil
+ISUZU:Japao
+IVECO:Italia
+JAC:China
+JAGUAR:Reino Unido
+JEEP:Estados Unidos
+JINBEI:China
+JPX:Brasil
+LADA:Russia
+LAMBORGHINI:Alemanha
+LAND ROVER:Reino Unido
+LEXUS:Japao
+LIFAN:China
+LOBINI:Brasil
+LOTUS:Reino Unido
+MAHINDRA:India
+MASERATI:Italia
+MATRA:Franca
+MAZDA:Mazda
+MCLAREN:Reino Unido
+MERCURY:Estados Unidos
+MG:Reino Unido
+MINI:Reino Unido
+MIURA:Brasil
+PLYMOUTH:Estados Unidos
+PONTIAC:Estados Unidos
+PORSCHE:Alemanha
+RAM:Estados Unidos
+RELY:China
+ROLLS:Reino Unido
+ROVER:Reino Unido
+SAAB:Suecia
+SATURN:Estados Unidos
+SEAT:Espanha
+SHINERAY:China
+SMART:Alemanha
+SSANGYONG:Japao
+SUBARU:Japao
+TAC:Brasil
+TROLLER:Brasil
+WAKE:Brasil
+WALK:Brasil
+DAFRA:Brasil
+HARLEY-DAVIDSON:Estados Unidos
+KASINSKI:Brasil
+KAWASAKI:Japao
+SUNDOWN:Brasil
+YAMAHA:Japao
+ADLY:Estados Unidos
+AMAZONAS:Brasil
+APRILIA:Italia
+ATALA:Italia
+BAJAJ:India
+BEE:Brasil
+BENELLI:Italia
+BETA:Italia
+BIMOTA:Italia
+BRANDY:Brasil
+BRAVA:Brasil
+BRP:Canada	
+BUELL:Estados Unidos
+BUENO:Argentina
+BULL:Brasil
+BYCRISTO:Brasil
+CAGIVA:Italia
+CALOI:Brasil
+DAELIM:Coreia do Sul
+DAYANG:China
+DAYUN:China
+DERBI:Espanha
+DUCATI:Italia
+EMME:Alemanha
+FOX:Alemanha
+FUSCO MOTOSEGURA:Brasil
+FYM:China
+GARINNI:China
+GAS GAS:Espanha
+GREEN:Estados Unidos
+HAOBAO:China
+HAOJUE:China
+HARTFORD:Estados Unidos
+HERO:Argentina
+HUSABERG:Suecia
+HUSQVARNA:Suecia
+INDIAN:Estados Unidos
+IROS:Brasil
+JIAPENG VOLCANO:Japao
+JOHNNYPAG:Estados Unidos
+JONNY:China
+KAHENA:Brasil
+KTM:Austria
+KYMCO:China
+LANDUM:China
+L'AQUILA:Brasil
+LAVRALE:Brasil
+LERIVO:Brasil
+LON-V:China
+MAGRAO TRICICLOS:Brasil
+MALAGUTI:Italia
+MIZA:Brasil
+MOTO GUZZI:Italia
+MOTOCAR:Japao
+MOTORINO:Italia
+MRX:Japao
+MV AGUSTA:Italia
+MVK:China
+ORCA:Japao
+PEGASSI:Italia
+PIAGGIO:Italia
+POLARIS:Estados Unidos
+REGAL RAPTOR:Espanha
+RIGUETE:Brasil
+ROYAL ENFIELD:Reino Unido
+SANYANG:China
+SIAMOTO:Japao
+TARGOS:Japao
+TIGER:Reino Unido
+TRAXX:China
+TRIUMPH:Reino Unido
+VENTO:Estados Unidos
+WUYANG:Japao
+BEPOBUS:Brasil
+CICCOBUS:Brasil 
+DAF:Suecia
+EFFA-JMC:Uruguai
+GMC:Portugal
+MAN:Alemanha
+MARCOPOLO:Brasil
+MASCARELLO:Brasil
+NAVISTAR:Brasil
+NEOBUS:Brasil
+PUMA-ALFA:Brasil
+SCANIA:Sueca
+SINOTRUK:China
+MAXIBUS:Brasil
+SAAB-SCANIA:Sueca
+SHACMAN:China
+WALKBUS:Brasil
