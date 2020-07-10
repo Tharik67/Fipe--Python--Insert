@@ -128,7 +128,7 @@ def BuscaAuto():
                     preco = automovel['preco'][3:-3]
                     preco = preco.replace('.' , '')
                     if ano >=2010:
-                        #txt = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
+                        #sql = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
                         #print(txt)
                         #saida.write(txt)
                         #(Codigo, Fabricante, Modelo,Ano,Pais,Preco_tabela)
