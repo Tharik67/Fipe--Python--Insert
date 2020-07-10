@@ -120,6 +120,7 @@ def BuscaAuto(tipo , marcas):
                 preco = preco.replace('.' , '')
                 if ano >=2010:
                     txt = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
+                    #insereAuto(codigo, fabricante , modelo ,ano , pais ,preco)
                     print(txt)
                     #saida.write(txt)
                     #(Codigo, Fabricante, Modelo,Ano,Pais,Preco_tabela)
