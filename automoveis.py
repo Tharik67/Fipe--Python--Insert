@@ -1,7 +1,7 @@
 from banco import getConect,Error,errorcode
 
 import time
-import json, requests
+import json ,requests
 
 #Função: insereAuto
 #
@@ -30,17 +30,24 @@ def insereAuto(codigo , fabricante, modelo ,ano , pais, preco , connection = get
         return 1
     
 
-def get_pais(marca ):
-    arquivo = open('marcaAutomoveis.txt','r')
+def get_pais(marca):
+    arquivo = open('marcaAutomoveis.txt','r+')
     for linha in arquivo:
         i = linha.index(":")
         if marca in linha[:i]: 
             i+=1
             arquivo.close()
             return(linha[i:-1])
-    return None
+    print("!nao achei %s no arquivo!" %marca)
+    pais = input("qual o pais de fabricacao da marca %s :" %marca)
+    saida = '%s:%s' %(marca,pais)
+    arquivo.write()
+    return pais 
     
 #Função: buscaMarca
+#
+#Parametros:
+#   tipos_automoveis= ['motos' , 'carros' , 'caminhoes']
 #
 #Descrição da função:
 #   Busca as marcas de automoveis validos 
@@ -48,11 +55,9 @@ def get_pais(marca ):
 #Parâmetros
 #   void
 #    
-def buscaMarca():
-    #tipos_automoveis= ['motos' , 'carros' , 'caminhoes']
-    tipos_automoveis= ['carros']
-    i=0
-    for tipo in tipos_automoveis:
+def buscaMarca(lista = ['carros']):
+    
+    for tipo in lista:
 
         #A api da tabela FIPE bloqueia o usuario a pesquisar mais de 60 vezes por minuto
         #por isso a cada pesquisa vamos esperar 1
@@ -78,9 +83,9 @@ def buscaMarca():
 #   Ano de comeco
 #   marca = ALL
 #
-def BuscaAuto():
+def BuscaAuto(tipo , marcas):
 
-    for marca in json_marca:
+    for marca in marcas:
         print(marca)
         id_marca = marca['id']
         pais = get_pais(marca['name'])
@@ -114,11 +119,14 @@ def BuscaAuto():
                 preco = automovel['preco'][3:-3]
                 preco = preco.replace('.' , '')
                 if ano >=2010:
-                    #sql = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
-                    #print(txt)
+                    txt = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
+                    print(txt)
                     #saida.write(txt)
                     #(Codigo, Fabricante, Modelo,Ano,Pais,Preco_tabela)
                     i+=1
+                break
+            break
+        break 
 
 for el in buscaMarca():
     print(el)
