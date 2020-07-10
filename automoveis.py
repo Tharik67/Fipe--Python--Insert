@@ -67,7 +67,7 @@ def buscaMarca():
             marcas.append(fabricante)
         return marcas
             
-    
+
 #Função: BuscaAuto
 #
 #Descrição da função:
@@ -80,59 +80,45 @@ def buscaMarca():
 #
 def BuscaAuto():
 
-    #tipos_automoveis= ['motos' , 'carros' , 'caminhoes']
-    tipos_automoveis= ['carros']
-    i=0
-    for tipo in tipos_automoveis:
-
-        #A api da tabela FIPE bloqueia o usuario a pesquisar mais de 60 vezes por minuto
-        #por isso a cada pesquisa vamos esperar 1
-        html_marca = "http://fipeapi.appspot.com/api/1/%s/marcas.json" %tipo
+    for marca in json_marca:
+        print(marca)
+        id_marca = marca['id']
+        pais = get_pais(marca['name'])
+        print(pais)
+        break
         time.sleep(1)
-        
-        api_marca = requests.get(html_marca)
-        json_marca = json.loads(api_marca.content)
-        
-       
-        for marca in json_marca:
-            print(marca)
-            id_marca = marca['id']
-            pais = get_pais(marca['name'])
-            print(pais)
-            break
+        html_veiculo = "http://fipeapi.appspot.com/api/1/%s/veiculos/%d.json" %(tipo,id_marca)
+        api_veiculo = requests.get(html_veiculo)
+        json_veiculo = json.loads(api_veiculo.content)
+        for veiculo in json_veiculo:
+            
+            id_veiculo = veiculo['id']
             time.sleep(1)
-            html_veiculo = "http://fipeapi.appspot.com/api/1/%s/veiculos/%d.json" %(tipo,id_marca)
-            api_veiculo = requests.get(html_veiculo)
-            json_veiculo = json.loads(api_veiculo.content)
-            for veiculo in json_veiculo:
-                
-                id_veiculo = veiculo['id']
+            html_automovel = "http://fipeapi.appspot.com/api/1/%s/veiculo/%d/%s.json" %(tipo,id_marca,id_veiculo)
+            api_automovel = requests.get(html_automovel)
+            json_automovel = json.loads(api_automovel.content)
+            for el in json_automovel:
                 time.sleep(1)
-                html_automovel = "http://fipeapi.appspot.com/api/1/%s/veiculo/%d/%s.json" %(tipo,id_marca,id_veiculo)
-                api_automovel = requests.get(html_automovel)
-                json_automovel = json.loads(api_automovel.content)
-                for el in json_automovel:
-                    time.sleep(1)
-                    print("Rodando ... Inseridos:" ,i)              
-                    ano_veiculo = el['id']
-                    
-                    html_ano = "http://fipeapi.appspot.com/api/1/%s/veiculo/%d/%s/%s.json" %(tipo,id_marca,id_veiculo,ano_veiculo)
-                    api_ano = requests.get(html_ano)
-                    
-                    automovel = json.loads(api_ano.content)
-                    #pais = get_pais(automovel['marca'])
-                    codigo =automovel['fipe_codigo']
-                    fabricante = automovel['marca']
-                    modelo = automovel['veiculo']
-                    ano = int(automovel['ano_modelo'])
-                    preco = automovel['preco'][3:-3]
-                    preco = preco.replace('.' , '')
-                    if ano >=2010:
-                        #sql = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
-                        #print(txt)
-                        #saida.write(txt)
-                        #(Codigo, Fabricante, Modelo,Ano,Pais,Preco_tabela)
-                        i+=1
+                print("Rodando ... Inseridos:" ,i)              
+                ano_veiculo = el['id']
+                
+                html_ano = "http://fipeapi.appspot.com/api/1/%s/veiculo/%d/%s/%s.json" %(tipo,id_marca,id_veiculo,ano_veiculo)
+                api_ano = requests.get(html_ano)
+                
+                automovel = json.loads(api_ano.content)
+                #pais = get_pais(automovel['marca'])
+                codigo =automovel['fipe_codigo']
+                fabricante = automovel['marca']
+                modelo = automovel['veiculo']
+                ano = int(automovel['ano_modelo'])
+                preco = automovel['preco'][3:-3]
+                preco = preco.replace('.' , '')
+                if ano >=2010:
+                    #sql = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
+                    #print(txt)
+                    #saida.write(txt)
+                    #(Codigo, Fabricante, Modelo,Ano,Pais,Preco_tabela)
+                    i+=1
 
 for el in buscaMarca():
     print(el)
