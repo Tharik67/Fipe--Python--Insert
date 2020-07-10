@@ -1,37 +1,20 @@
-from banco import getConect,Error,errorcode
+# pegar da api as informcacoes
+# salvar em um txt: 
+# insert into automoveis values (Codigo, Fabricante, Modelo,Ano,Pais,Preco_tabela) 
+
+
+#http://fipeapi.appspot.com/api/1/[tipo]/[acao]/[parametros].json
+#O parametro [tipo] aceita três possíveis valores: carros, motos ou caminhoes.
+#
+#O parametro [acao] está relacionado ao tipo de dados que você deseja obter.
 
 import time
-import json ,requests
+import json, requests
 
-#Função: insereAuto
-#
-#Descrição da função:
-#   Insere no banco my a dupla de automoveis
-#
-#Parâmetros
-#   CodigoAuto  
-#   Fabricante
-#   Modelo
-#   Pais
-#   Preco
-#
-def insereAuto(codigo , fabricante, modelo ,ano , pais, preco , connection = getConect()):
-    try:
-        sql ="""Inserte into automoveis  
-                values (%s,%s,%s,%s,%s,%s)
-                """
-        cursor = connection.cursor(prepared = True)
-        cursor.execute(sql ,())
-        rs = cursor.fetchall()
-        cursor.close()
-        return rs
-    except Error as e:
-        print("Erro ao procurar o nome dos jogadores", e)
-        return 1
-    
+saida = open('automoveis.txt', 'w')
 
-def get_pais(marca):
-    arquivo = open('marcaAutomoveis.txt','r+')
+def get_pais(marca ):
+    arquivo = open('marcaAutomoveis.txt','r')
     for linha in arquivo:
         i = linha.index(":")
         if marca in linha[:i]: 
@@ -44,53 +27,25 @@ def get_pais(marca):
     arquivo.write()
     return pais 
     
-#Função: buscaMarca
-#
-#Parametros:
-#   tipos_automoveis= ['motos' , 'carros' , 'caminhoes']
-#
-#Descrição da função:
-#   Busca as marcas de automoveis validos 
-#
-#Parâmetros
-#   void
-#    
-def buscaMarca(lista = ['carros']):
     
-    for tipo in lista:
-
-        #A api da tabela FIPE bloqueia o usuario a pesquisar mais de 60 vezes por minuto
-        #por isso a cada pesquisa vamos esperar 1
-        html_marca = "http://fipeapi.appspot.com/api/1/%s/marcas.json" %tipo
-        time.sleep(1)
         
-        api_marca = requests.get(html_marca)
-        json_marca = json.loads(api_marca.content)
-        marcas =[]
-        for el in json_marca:
-            fabricante = {'id':el['id'] , 'name': el['name']}
-            marcas.append(fabricante)
-        return marcas
             
 
-#Função: BuscaAuto
-#
-#Descrição da função:
-#   Busca na api da tabela fipe automoveis validos 
-#   Salva no banco 
-#
-#Parâmetros
-#   Ano de comeco
-#   marca = ALL
-#
-def BuscaAuto(tipo , marcas):
 
-    for marca in marcas:
-        print(marca)
+
+tipos_automoveis= ['motos' , 'carros' , 'caminhoes']
+i=0
+for tipo in tipos_automoveis:
+    time.sleep(1)
+
+    html_marca = "http://fipeapi.appspot.com/api/1/%s/marcas.json" %tipo
+
+    api_marca = requests.get(html_marca)
+    json_marca = json.loads(api_marca.content)
+
+    for marca in json_marca:
+        
         id_marca = marca['id']
-        pais = get_pais(marca['name'])
-        print(pais)
-        break
         time.sleep(1)
         html_veiculo = "http://fipeapi.appspot.com/api/1/%s/veiculos/%d.json" %(tipo,id_marca)
         api_veiculo = requests.get(html_veiculo)
@@ -111,7 +66,7 @@ def BuscaAuto(tipo , marcas):
                 api_ano = requests.get(html_ano)
                 
                 automovel = json.loads(api_ano.content)
-                #pais = get_pais(automovel['marca'])
+                pais = get_pais(automovel['marca'])
                 codigo =automovel['fipe_codigo']
                 fabricante = automovel['marca']
                 modelo = automovel['veiculo']
@@ -120,14 +75,8 @@ def BuscaAuto(tipo , marcas):
                 preco = preco.replace('.' , '')
                 if ano >=2010:
                     txt = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
-                    #insereAuto(codigo, fabricante , modelo ,ano , pais ,preco)
                     print(txt)
-                    #saida.write(txt)
+                    saida.write(txt)
                     #(Codigo, Fabricante, Modelo,Ano,Pais,Preco_tabela)
                     i+=1
-                break
-            break
-        break 
-
-for el in buscaMarca():
-    print(el)
+                   
