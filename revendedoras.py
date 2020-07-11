@@ -61,7 +61,7 @@ def gera_revendedora (saida_revendedora,saida_cnpj,n):
     CPFproprietario = getCPF(cpfs)
     Estado = gera_estado()
 
-    txt1 = "('%s', '%s', '%s', '%s')\n" %(CNPJ, Nome, CPFproprietario, Estado)
+    txt1 = "Insert into revendedoras ('%s', '%s', '%s', '%s');\n" %(CNPJ, Nome, CPFproprietario, Estado)
     txt2 = "%s\n" %CNPJ
     
     saida_revendedora.write(txt1)
