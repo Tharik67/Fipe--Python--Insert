@@ -36,7 +36,7 @@ def gera_cpf():
     return "%d%d%d.%d%d%d.%d%d%d-%d%d" % tuple(n)
 
 def gera_estado(cpf):
-    n= int(cpf[11])
+    n= int(cpf[10])
     if n == 1 :
         estado = ['DF','GO','MT','MS','TO']
     elif n == 2:
@@ -61,8 +61,8 @@ def gera_estado(cpf):
     return random.choice(estado)
         
 def gera_nome (nome):
-    nome = random.choice(nomes)
-    return nome
+    n = random.choice(nome)
+    return n
 
 
 
@@ -73,18 +73,18 @@ arq_sobrenomes = open("sobrenomes.txt" , "r")
 
 nomes = []
 for linha in arq_nomes:
-    linha.strip()
-    nomes.append(linha[:-2])
-        
+    nomes.append(linha[:-1])
+
 sobrenomes = []
 for linha in arq_sobrenomes:
-    linha.strip()
-    nomes.append(linha[:-2])      
+    sobrenomes.append(linha[:-1])      
+
+
 
 def gera_consumidor(saida_consumidor,saida_cpf,nomes,sobrenome):
     cpf = gera_cpf()
-    nome = gera_nome(nomes)
-    sobrenome = gera_nome(sobrenome)
+    nome = random.choice(nomes)
+    sobrenome = random.choice(sobrenome)
     estado = gera_estado(cpf)
     data = gera_data(1940,2002)
     txt = "('%s', '%s', '%s', '%s', '%s')\n" %(cpf, nome, sobrenome,data,estado)
