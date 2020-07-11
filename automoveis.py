@@ -1,3 +1,12 @@
+#cria txt com codigo sql para insercao de carros com ano acima de 2010
+# 
+# 
+# 
+# 
+# 
+# 
+# O codigo pode demorar muito sem restricoes
+# Restricao recomendada: fazer a busca uma marca de cada vez
 
 
 import time
@@ -7,6 +16,31 @@ import json, requests
 save = open('cont.txt' , 'w')
 saida = open('automoveis.txt', 'w')
 
+def escolha (marcas):
+    i=0
+    lista = []
+    for el in marcas:
+        print ('%d   -  %s' %(i , el['name']))
+        i+=1
+    
+    print("escolha a marca que deseja buscar")
+    print("-1 para finalizar")
+    while True:
+        
+        a =int(input())
+        if a  < 0:
+            break
+        else:
+            if marcas[a] in lista:
+                pass
+            else:
+                lista.append(marcas[a])
+            
+        print(lista)
+    return lista
+
+#busca o pais da marca, no txt marcaAutomovies
+#caso nao ache, pede ao usuario 
 def get_pais(marca):
     arquivo = open('marcaAutomoveis.txt','r+')
     marca = marca.upper()
@@ -31,14 +65,18 @@ tipos_automoveis= ['carros']
 i=0
 
 for tipo in tipos_automoveis:
-    time.sleep(1)
     
+    #A tabela Fipe bloqueia muitas pesquisas
+    #por isso a cada vez que utilizamos, o programa espera 1 segundo para continuar
+    time.sleep(1)
     html_marca = "http://fipeapi.appspot.com/api/1/%s/marcas.json" %tipo
 
     api_marca = requests.get(html_marca)
     json_marca = json.loads(api_marca.content)
+    lista = escolha(json_marca)
+    print(lista)
     
-    for marca in json_marca:
+    for marca in lista:
         
         id_marca = marca['id']
         time.sleep(1)
