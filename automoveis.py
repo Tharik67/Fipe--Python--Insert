@@ -1,12 +1,11 @@
 #cria txt com codigo sql para insercao de carros com ano acima de 2010
-# 
-# 
-# 
-# 
-# 
-# 
-# O codigo pode demorar muito sem restricoes
-# Restricao recomendada: fazer a busca uma marca de cada vez
+#
+#Atencao :
+#A api bloqueia muitas consultas por minuto
+#Assim foi inserido tempo de espera a cada consulta
+#Por isso codigo pode demorar muito tempo
+#Recomendasse fazer pesquisas menores como buscar uma marca de cada vez
+
 
 
 import time

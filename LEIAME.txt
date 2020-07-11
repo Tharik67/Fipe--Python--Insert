@@ -1,0 +1,35 @@
+automoveis : 
+    Consome a api da tabela FIPE e salva em um txt codigos de insercao dos automoveis
+        com:
+            Codigo,modelo,fabricante,ano,pais  
+
+        Atencao :
+        A api bloqueia muitas consultas por minuto, por isso o codigo tem tempo de espera, por isso codigo pode demorar muito tempo
+        Por isso, recomendasse fazer pesquisas menores como buscar uma marca de cada vez
+
+consumidores :
+    Gera codigos de insercao de consumidores em um txt
+        com:
+            cpf,nome,sobrenome,estado    
+
+    os possiveis nomes estao em nomes.txt
+    os possiveis sobrenomes estao em sobrenomes.txt
+
+revendedoras: 
+    Gera codigos de insercao de revendedoras em um txt
+        com:
+            cnpj,nome,cpfproprietario,estado    
+
+    os possiveis nomes estao em nomes_reve.txt
+
+garagem :
+    Consome o txt gerado pelas revendedoras.py e automoveis.py
+    Gera codigos de insercao de garagem em um txt.
+        com:
+            cnpj,codigoAuto,AnoAuto,quantidade 
+
+negocios : 
+    Consome o txt gerado pelas revendedoras.py, automoveis.py e consumidores.py
+    Gera codigos de insercao de negocios em um txt.
+        com:
+            cnpj,cpfcomprador,codigoAuto,AnoAuto,data
