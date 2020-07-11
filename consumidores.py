@@ -87,7 +87,7 @@ def gera_consumidor(saida_consumidor,saida_cpf,nomes,sobrenome):
     sobrenome = random.choice(sobrenome)
     estado = gera_estado(cpf)
     data = gera_data(1940,2002)
-    txt = "('%s', '%s', '%s', '%s', '%s')\n" %(cpf, nome, sobrenome,data,estado)
+    txt = "Insert into automoveis ('%s', '%s', '%s', '%s', '%s');\n" %(cpf, nome, sobrenome,data,estado)
     txt2 = "%s\n" %cpf
     saida_consumidor.write(txt)
     saida_cpf.write(txt2)
