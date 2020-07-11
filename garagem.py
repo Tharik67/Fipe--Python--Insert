@@ -4,16 +4,24 @@
 
 import random
 
+arq_auto = open("automoveis.txt",'r') 
+ntotal = 0  
+for el in arq_auto:
+    ntotal +=1
+arq_auto.close()
+    
 
 
-def get_carro():
+def get_carro(total = ntotal):
     arq_auto = open("automoveis.txt",'r')
-    i = random.randint(1,1042)
+    #numero de carros 
+    i = random.randint(1,total)
     for el in arq_auto:
         i-=1
         if i == 0:
             a =el.split(',')
-            b= a[0][3:-1]
+            c= a[0].split(' ')
+            b= c[3][1:]
             c= int(a[3])
             arq_auto.close()
             return (b,c)
@@ -45,16 +53,16 @@ for linha in arq_cnpj:
 saida_garagem = open("garagem.txt" , 'w')
 for CNPJ in cnpjs:
     
-    ncar = random.randint(1,7)
-    carros = get_listcarro(ncar )
+    ncar = random.randint(0,13)
+    carros = get_listcarro(ncar)
     print(carros)
     for carro in carros:
         quantidade = random.randint(1,10)
         try:
             ano = int(carro[1])
-            txt = "('%s' , '%s' , %d , %d) \n" %(CNPJ , carro[0] ,ano , quantidade)
+            txt = "Insert into garagens ('%s' , '%s' , %d , %d); \n" %(CNPJ , carro[0] ,ano , quantidade)
             saida_garagem.write(txt)
         except :
-            pass            
+            pass
   
 
