@@ -76,5 +76,6 @@ for tipo in tipos_automoveis:
                 preco = preco.replace('.' , '')
                 txt = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
                 saida.write(txt)
+                print(txt)
                 i+=1
             
