@@ -1,17 +1,11 @@
 
+
 import time
 import json, requests
 
-try:
-   arq = open('save.txt' , 'r')
-   imarca = arq.readline()
-   iveiculo = arq.readline()
-except :
-    imarca =0
-    iveiculo=0
 
 save = open('cont.txt' , 'w')
-saida = open('automoveis.txt', 'w+')
+saida = open('automoveis.txt', 'w')
 
 def get_pais(marca):
     arquivo = open('marcaAutomoveis.txt','r+')
@@ -25,7 +19,7 @@ def get_pais(marca):
         
     print("!nao achei %s no arquivo!" %marca)
     pais = input("qual o pais de fabricacao da marca %s :" %marca)
-    dic = '%s:%s' %(marca,pais)
+    dic = '\n%s:%s' %(marca,pais)
     arquivo.write(dic)
     return pais 
     
@@ -44,7 +38,7 @@ for tipo in tipos_automoveis:
     api_marca = requests.get(html_marca)
     json_marca = json.loads(api_marca.content)
     
-    for marca in json_marca[imarca:]:
+    for marca in json_marca:
         
         id_marca = marca['id']
         time.sleep(1)
@@ -52,18 +46,19 @@ for tipo in tipos_automoveis:
         api_veiculo = requests.get(html_veiculo)
         json_veiculo = json.loads(api_veiculo.content)
         
-        for veiculo in json_veiculo[iveiculo:]:
+        for veiculo in json_veiculo:
+
             id_veiculo = veiculo['id']
             time.sleep(1)
             html_automovel = "http://fipeapi.appspot.com/api/1/%s/veiculo/%d/%s.json" %(tipo,id_marca,id_veiculo)
             api_automovel = requests.get(html_automovel)
             json_automovel = json.loads(api_automovel.content)
-        
+            
             for el in json_automovel:
             
                 print("Rodando ... Inseridos:" ,i)              
                 ano_veiculo = el['id']
-                
+
                 if int(ano_veiculo[:-2]) < 2010:
                     break
                             
@@ -80,13 +75,6 @@ for tipo in tipos_automoveis:
                 preco = automovel['preco'][3:-3]
                 preco = preco.replace('.' , '')
                 txt = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
-                print(txt)
                 saida.write(txt)
                 i+=1
             
-            
-                    
-            
-        
-    
-                   
