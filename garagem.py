@@ -20,8 +20,8 @@ def get_carro(total = ntotal):
         i-=1
         if i == 0:
             a =el.split(',')
-            c= a[0].split(' ')
-            b= c[3][1:]
+            aux= a[0].split(' ')
+            b= aux[3][1:]
             c= int(a[3])
             arq_auto.close()
             return (b,c)

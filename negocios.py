@@ -25,15 +25,13 @@ def get_carro():
         i-=1
         if i == 0:
             a =el.split(',')
-            b= a[0][2:-1]
+            aux= a[0].split(' ')
+            b= aux[3][1:]
             c= int(a[3])
             d = int(a[5][:-3])
             arq_auto.close()
             return (b,c,d)
-        
-
-
-
+    
 
 def get_listcarro(ncar ):
     
@@ -64,7 +62,6 @@ for linha in arq_cpf:
     cpfs.append(linha[:-1])
 
 saida_negocios = open("negocios.txt" , "w")  
-#saida_garagem = open("garagem.txt" , 'w')
 for CPF in cpfs:    
     ncar = random.randint(1,2)
     k = random.randint(1,3)
@@ -75,10 +72,10 @@ for CPF in cpfs:
         codigo = carro[0]
         ano = carro[1]
         data = gera_data(carro[1] , 2020)
-        variacao = random.randint(1,3)*10
+        variacao = random.randint(1,3)
         preco = carro[2] *variacao
 
-        txt = "('%s' , '%s','%s' , %d ,'%s' , %d) \n" %(CPF , cnpj,codigo ,ano , data, preco)
+        txt = "Insert into negocios ('%s' , '%s','%s' , %d ,'%s' , %d); \n" %(CPF , cnpj,codigo ,ano , data, preco)
         saida_negocios.write(txt)
     
     #(CPFcomprador, CNPJrevenda, CodigoAuto, AnoAuto, Data, Preço)  

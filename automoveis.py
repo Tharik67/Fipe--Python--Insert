@@ -48,7 +48,7 @@ def get_pais(marca):
         if marca in linha[:i]: 
             i+=1
             arquivo.close()
-            return(linha[i:-1])
+            return(linha[i:])
         
     print("!nao achei %s no arquivo!" %marca)
     pais = input("qual o pais de fabricacao da marca %s :" %marca)
@@ -72,10 +72,11 @@ for tipo in tipos_automoveis:
 
     api_marca = requests.get(html_marca)
     json_marca = json.loads(api_marca.content)
-    lista = escolha(json_marca)
-    print(lista)
+    #lista = escolha(json_marca)
+    lista = json_marca
     
-    for marca in lista:
+    
+    for marca in lista[1:]:
         
         id_marca = marca['id']
         time.sleep(1)
