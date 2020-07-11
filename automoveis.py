@@ -1,19 +1,14 @@
-# pegar da api as informcacoes
-# salvar em um txt: 
-# insert into automoveis values (Codigo, Fabricante, Modelo,Ano,Pais,Preco_tabela) 
-
-
-#http://fipeapi.appspot.com/api/1/[tipo]/[acao]/[parametros].json
-#O parametro [tipo] aceita três possíveis valores: carros, motos ou caminhoes.
-#
-#O parametro [acao] está relacionado ao tipo de dados que você deseja obter.
 
 import time
 import json, requests
 
-
-imarca =0
-iveiculo=0
+try:
+   arq = open('save.txt' , 'r')
+   imarca = arq.readline()
+   iveiculo = arq.readline()
+except :
+    imarca =0
+    iveiculo=0
 
 save = open('cont.txt' , 'w')
 saida = open('automoveis.txt', 'w+')
@@ -49,15 +44,15 @@ for tipo in tipos_automoveis:
     api_marca = requests.get(html_marca)
     json_marca = json.loads(api_marca.content)
     
-    for marca in json_marca:
+    for marca in json_marca[imarca:]:
         
         id_marca = marca['id']
         time.sleep(1)
         html_veiculo = "http://fipeapi.appspot.com/api/1/%s/veiculos/%d.json" %(tipo,id_marca)
         api_veiculo = requests.get(html_veiculo)
         json_veiculo = json.loads(api_veiculo.content)
-
-        for veiculo in json_veiculo:
+        
+        for veiculo in json_veiculo[iveiculo:]:
             id_veiculo = veiculo['id']
             time.sleep(1)
             html_automovel = "http://fipeapi.appspot.com/api/1/%s/veiculo/%d/%s.json" %(tipo,id_marca,id_veiculo)
@@ -88,6 +83,8 @@ for tipo in tipos_automoveis:
                 print(txt)
                 saida.write(txt)
                 i+=1
+            
+            
                     
             
         
