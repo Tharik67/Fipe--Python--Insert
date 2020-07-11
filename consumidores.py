@@ -36,7 +36,7 @@ def gera_cpf():
     return "%d%d%d.%d%d%d.%d%d%d-%d%d" % tuple(n)
 
 def gera_estado(cpf):
-    n= cpf[11]
+    n= int(cpf[11])
     if n == 1 :
         estado = ['DF','GO','MT','MS','TO']
     elif n == 2:
