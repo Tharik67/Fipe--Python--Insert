@@ -74,7 +74,7 @@ for tipo in tipos_automoveis:
                 ano = int(automovel['ano_modelo'])
                 preco = automovel['preco'][3:-3]
                 preco = preco.replace('.' , '')
-                txt = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s)" %(codigo, fabricante , modelo ,ano , pais ,preco)
+                txt = "Insert into automoveis ('%s','%s','%s',%s,'%s',%s);" %(codigo, fabricante , modelo ,ano , pais ,preco)
                 saida.write(txt)
                 print(txt)
                 i+=1
