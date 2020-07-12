@@ -97,7 +97,7 @@ for tipo in tipos_automoveis:
                 print("Rodando ... Inseridos:" ,i)              
                 ano_veiculo = el['id']
 
-                if int(ano_veiculo[:-2]) < 2010:
+                if int(ano_veiculo[:-2]) < 2010 or int(ano_veiculo[:-2]) > 2021:
                     break
                             
                 time.sleep(1)
